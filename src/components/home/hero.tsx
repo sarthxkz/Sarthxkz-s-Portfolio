@@ -30,12 +30,12 @@ export async function Hero() {
           </h1>
         </HeroScrub>
 
-        <div className="mt-[clamp(20px,3svh,48px)] grid gap-12 lg:min-h-0 lg:flex-1 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-[clamp(28px,4.5svh,64px)] grid gap-12 lg:min-h-0 lg:flex-1 lg:grid-cols-12 lg:gap-10">
           <div className="flex flex-col lg:col-span-5 lg:min-h-0">
             <p {...line(6)} className="t-stagger-line max-w-[30ch] text-[clamp(22px,2vw,28px)] leading-[1.3] text-ink">
               {profile.headline}
             </p>
-            <p {...line(7)} className="t-stagger-line mt-4 max-w-[54ch] text-ink-2">
+            <p {...line(7)} className="t-stagger-line mt-[clamp(16px,2.6svh,28px)] max-w-[54ch] text-ink-2">
               {profile.heroDescription}
             </p>
             <div {...line(8)} className="t-stagger-line mt-[clamp(20px,3svh,32px)] flex flex-wrap gap-3">
