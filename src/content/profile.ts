@@ -4,8 +4,13 @@
 export const profile = {
   name: "Sarthak Kumar",
   shortName: "Sarthak",
+  // Wordmark in the navigation bar.
+  handle: "sarthxkz",
   // Used for <title>, Open Graph and the hero sentence.
   headline: "I build software products, and I keep an honest record of what works.",
+  // The paragraph under the hero headline.
+  heroDescription:
+    "CSE student at SRMIST, Kattankulathur, class of 2028. I build full systems, from the database rules to the release build: a live 3D globe of Earth-observation data, a private social app with end-to-end encrypted chat, an attendance planner for SRMIST students and a network for finding teammates. I work across full-stack, mobile, security and AI, and I'm a member of PLACVS, SRMIST's placement team.",
   intro:
     "Computer Science student at SRMIST, Kattankulathur. I build full-stack apps end to end, from the database rules to the release build, and write down what is verified and what is still unfinished.",
   location: "Chennai, India",

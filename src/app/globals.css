@@ -509,11 +509,7 @@ a { text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
 .stack-inner { transform-origin: 50% 0; }
 
 /* Navigation slides away while reading down and returns on the way up. */
-.site-header { transition: transform 350ms var(--ease-smooth-out); }
 .site-header[data-hidden="true"] { transform: translateY(-100%); }
-@media (prefers-reduced-motion: reduce) {
-  .site-header { transition: none; }
-}
 
 /* ---------------------------------------------------------------------------
    Hero name glitch: torn horizontal bands of two offset copies (an amber
@@ -568,25 +564,45 @@ a { text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
 }
 
 /* ---------------------------------------------------------------------------
-   Engineering-paper dot grid behind the page: a faint base layer that drifts
-   with the scroll, and a brighter copy masked to a circle around the mouse.
+   Background: the live dot field (canvas) and a soft vignette for depth.
 --------------------------------------------------------------------------- */
-.dot-grid {
+.dot-field {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+.dot-vignette {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image: radial-gradient(circle at center, rgb(237 235 230 / 0.13) 1px, transparent 1.4px); /* taste-skill-ignore: dot pattern the user chose */
-  background-size: 28px 28px;
+  background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgb(6 9 12 / 0.75) 100%); /* taste-skill-ignore: vignette scrim for the user's requested background */
 }
-.dot-grid--glow {
-  background-image: radial-gradient(circle at center, rgb(237 235 230 / 0.55) 1.2px, transparent 1.7px); /* taste-skill-ignore: dot pattern the user chose */
-  -webkit-mask-image: radial-gradient(200px circle at var(--mx, -999px) var(--my, -999px), #000, transparent); /* taste-skill-ignore */
-  mask-image: radial-gradient(200px circle at var(--mx, -999px) var(--my, -999px), #000, transparent); /* taste-skill-ignore */
-  opacity: 0;
-  transition: opacity 400ms ease;
+
+/* ---------------------------------------------------------------------------
+   Glass navigation (Apple-style material): clear over the hero, then a
+   blurred, saturated dark glass with a lit edge once content scrolls under it.
+--------------------------------------------------------------------------- */
+.site-header {
+  background: transparent;
+  transition:
+    transform 350ms var(--ease-smooth-out),
+    background-color 300ms ease,
+    backdrop-filter 300ms ease,
+    box-shadow 300ms ease;
 }
-.dot-grid--glow[data-on="true"] { opacity: 1; }
-@media (hover: none), (prefers-reduced-motion: reduce) {
-  .dot-grid--glow { display: none; }
+.site-header[data-glass="true"] {
+  background: rgb(12 17 22 / 0.55);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); /* taste-skill-ignore: the user asked for an Apple-style glass bar */
+  backdrop-filter: blur(20px) saturate(180%); /* taste-skill-ignore */
+  box-shadow: inset 0 -1px 0 rgb(255 255 255 / 0.07), 0 8px 24px rgb(0 0 0 / 0.18); /* taste-skill-ignore: lit edge of a floating material */
+}
+.site-header[data-glass="true"] a,
+.site-header[data-glass="true"] button { text-shadow: 0 1px 2px rgb(0 0 0 / 0.35); } /* taste-skill-ignore: vibrancy over glass */
+@media (prefers-reduced-transparency: reduce) {
+  .site-header[data-glass="true"] { background: var(--ground); backdrop-filter: none; -webkit-backdrop-filter: none; } /* taste-skill-ignore: reduced-transparency fallback removes the glass */
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
 }

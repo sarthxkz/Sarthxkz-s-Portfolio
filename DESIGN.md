@@ -14,6 +14,11 @@ colors:
   accent-hover: "#f6b856"
   accent-ink: "#1a1206"
   image-outline: "oklch(1 0 0 / 0.1)"
+  glass: "rgb(12 17 22 / 0.55)"
+  glass-edge: "rgb(255 255 255 / 0.07)"
+  glass-shadow: "rgb(0 0 0 / 0.18)"
+  glass-text-shadow: "rgb(0 0 0 / 0.35)"
+  vignette: "rgb(6 9 12 / 0.75)"
 typography:
   display:
     fontFamily: "Mona Sans, ui-sans-serif, system-ui, sans-serif"
@@ -167,9 +172,9 @@ Deep blue-graphite under a faint engineering-paper dot grid, with warm off-white
 - **Ink Third** (ink-3): metadata, stacks, captions, diagram arrows, link underline at rest, square "blocked" outline mark.
 
 ### Background
-- **Dot grid:** the page ground carries a 28px engineering-paper grid of 1px dots in ink at 13% opacity, fixed behind all content (`z-index: -1`, ground colour on `<html>`). It drifts at 0.12x the scroll for depth.
-- **Cursor glow:** a second copy of the grid, dots in ink at 55%, is masked to a 200px circle around a mouse pointer and fades in over 400ms. Hidden on touch devices and under reduced motion; the base grid stays.
-- Surfaces (panels, tiles, footer) are opaque, so the grid only shows on the open ground between them.
+- **Dot field:** one fixed canvas behind all content draws a 28px engineering-paper grid of 1.4px square dots in ink at 12% opacity, drifting at 0.12x the scroll. On load a ripple runs out from the hero (about 2.4s); a slow diagonal band of light sweeps the field roughly every 14s. Around a mouse pointer a 190px lens parts the dots by up to 14px, brightens them by up to 50% and swells them. Idles at 30fps, pauses in background tabs, and draws one still frame under reduced motion. Touch devices get the field without the lens.
+- **Vignette:** a fixed radial scrim darkens the screen edges to `vignette` for depth.
+- Surfaces (panels, tiles, footer) are opaque, so the field only shows on the open ground between them.
 
 ### Named Rules
 **The One Lamp Rule.** Amber marks what is live or what you should press next, and the focus ring. The one licensed exception is the amber channel that flickers through the name during a glitch burst (user request). If a new use is none of these, it is ink.
@@ -262,6 +267,7 @@ State is carried by form, not only colour (10px):
 - **Disabled:** at the min or max bound the step button is disabled.
 
 ### Navigation
+- **Glass bar (Apple-style material):** clear over the hero; once the page scrolls, it materializes as `glass` with a 20px blur and 180% saturation, a 1px `glass-edge` at its foot and a soft `glass-shadow`, with a light text shadow for vibrancy. It slides away on scroll down and back on scroll up. Solid ground under `prefers-reduced-transparency`. The wordmark reads "sarthxkz" at wdth 125.
 - **Desktop:** 64px sticky bar on ground. Wordmark at 17px 600, wdth 112. Section links at 15px ink-2, ink when hovered or current; the current section gets a 2px ink underline that scales in from the left (250ms, smooth-out).
 - **Hide on scroll:** the bar slides up out of view (350ms, smooth-out) when scrolling down past 240px and returns on any scroll up or keyboard focus.
 - **Mobile:** a "Menu" secondary button opens a graphite-2 dropdown (overlay shadow) anchored top right, scaling from 0.97 over 250ms and closing to 0.99 over 150ms; items are 48px rows at 17px; Escape and outside press close it.

@@ -20,6 +20,7 @@ export function SiteNav() {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [glass, setGlass] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -31,6 +32,7 @@ export function SiteNav() {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const y = window.scrollY;
+        setGlass(y > 8);
         if (Math.abs(y - last) < 6) return;
         setHidden(y > last && y > 240);
         last = y;
@@ -92,15 +94,18 @@ export function SiteNav() {
   const href = (id: string) => (onHome ? `#${id}` : `/#${id}`);
 
   return (
-    <header className="site-header sticky top-0 z-50 bg-ground" data-hidden={hidden && !open ? "true" : "false"} onFocusCapture={() => setHidden(false)}>
+    <header
+      className="site-header sticky top-0 z-50"
+      data-hidden={hidden && !open ? "true" : "false"}
+      data-glass={glass || open ? "true" : "false"} onFocusCapture={() => setHidden(false)}>
       <nav aria-label="Primary" className="frame flex h-16 items-center justify-between gap-6">
         <Link
           href="/"
-          className="font-semibold tracking-[-0.01em] text-[17px] text-ink"
-          style={{ fontVariationSettings: '"wdth" 112' }}
+          className="text-[19px] font-[650] tracking-[-0.02em] text-ink"
+          style={{ fontVariationSettings: '"wdth" 125' }}
           onClick={() => closeMenu(false)}
         >
-          {profile.name}
+          {profile.handle}
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

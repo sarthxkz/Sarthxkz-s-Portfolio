@@ -169,11 +169,20 @@
           "#edebe6"
         ]
       },
-      "dot": {
+      "glass": {
         "role": "neutral",
-        "displayName": "Grid Dot",
-        "canonical": "rgb(237 235 230 / 0.13)",
-        "note": "ink at 13%; glow layer at 55%"
+        "displayName": "Nav Glass",
+        "canonical": "rgb(12 17 22 / 0.55)"
+      },
+      "glass-edge": {
+        "role": "neutral",
+        "displayName": "Glass Edge",
+        "canonical": "rgb(255 255 255 / 0.07)"
+      },
+      "vignette": {
+        "role": "neutral",
+        "displayName": "Edge Vignette",
+        "canonical": "rgb(6 9 12 / 0.75)"
       }
     },
     "typographyMeta": {
@@ -358,14 +367,14 @@
         "purpose": "Hero name: once after load, on mouse hover, every 7-11s while visible. Off under reduced motion."
       },
       {
-        "name": "dot-grid-drift",
-        "value": "background-position-y = -scrollY * 0.12, rAF-batched",
-        "purpose": "Background depth; static under reduced motion."
+        "name": "dot-field",
+        "value": "canvas, 28px grid, 12% ink dots; load ripple 2.4s; diagonal light band ~14s; 190px cursor lens (push 14px, +50% alpha); 30fps idle",
+        "purpose": "Page background. Still frame under reduced motion; no lens on touch."
       },
       {
-        "name": "dot-grid-glow",
-        "value": "200px radial mask at the pointer, opacity 400ms ease",
-        "purpose": "Brightens grid dots near a mouse pointer; hidden on touch and reduced motion."
+        "name": "glass-materialize",
+        "value": "background, backdrop-filter, box-shadow 300ms ease when scrollY > 8",
+        "purpose": "Navigation glass appears once content scrolls under it."
       }
     ],
     "breakpoints": [

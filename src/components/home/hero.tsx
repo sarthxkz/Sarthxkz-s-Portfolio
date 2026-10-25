@@ -35,9 +35,8 @@ export async function Hero() {
             <p {...line(6)} className="t-stagger-line max-w-[30ch] text-[clamp(22px,2vw,28px)] leading-[1.3] text-ink">
               {profile.headline}
             </p>
-            <p {...line(7)} className="t-stagger-line mt-4 max-w-[46ch] text-ink-2 [@media(min-width:1024px)_and_(max-height:760px)]:hidden">
-              CSE student at SRMIST, Kattankulathur, class of 2028. I build full systems, from the database rules to the
-              release build.
+            <p {...line(7)} className="t-stagger-line mt-4 max-w-[54ch] text-ink-2">
+              {profile.heroDescription}
             </p>
             <div {...line(8)} className="t-stagger-line mt-[clamp(20px,3svh,32px)] flex flex-wrap gap-3">
               <a href="#work" className="btn btn-primary">
@@ -48,7 +47,7 @@ export async function Hero() {
               </a>
             </div>
 
-            <ul className="mt-10 lg:mt-auto lg:pt-6" aria-label="Projects">
+            <ul className="mt-10 lg:mt-auto lg:pt-6 [@media(min-width:1024px)_and_(max-height:820px)]:hidden" aria-label="Projects">
               {projects.map((p, i) => (
                 <li key={p.slug} {...line(9 + i)} className="t-stagger-line">
                   <a
@@ -81,7 +80,7 @@ export async function Hero() {
                       height={cover.height}
                       priority
                       sizes="(min-width: 1024px) 56vw, 100vw"
-                      className="hero-cover screenshot-outline block h-auto w-full lg:h-full lg:object-cover lg:object-top"
+                      className="hero-cover screenshot-outline block h-auto w-full lg:h-full lg:object-cover lg:object-left-top"
                     />
                   </div>
                 </Tilt>
