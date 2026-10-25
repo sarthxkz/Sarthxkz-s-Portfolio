@@ -19,27 +19,28 @@ const jetbrains = JetBrains_Mono({ // taste-skill-ignore
   display: "swap",
 });
 
-const description = `${profile.name}: ${profile.intro}`;
+const metadataName = profile.name.toUpperCase();
+const description = `${metadataName}: ${profile.intro.toUpperCase()}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.siteUrl),
   title: {
-    default: `${profile.name}, student developer`,
-    template: `%s · ${profile.name}`,
+    default: metadataName,
+    template: `%s · ${metadataName}`,
   },
   description,
-  authors: [{ name: profile.name, url: profile.links.github }],
+  authors: [{ name: metadataName, url: profile.links.github }],
   openGraph: {
     type: "website",
-    title: `${profile.name}, student developer`,
+    title: metadataName,
     description,
     url: "/",
-    siteName: profile.name,
+    siteName: metadataName,
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${profile.name}, student developer`,
+    title: metadataName,
     description,
   },
   alternates: { canonical: "/" },

@@ -44,7 +44,7 @@ export const profile = {
   email: "sarthak14072006@gmail.com",
   links: {
     github: "https://github.com/sarthxkz",
-    linkedin: "https://www.linkedin.com/in/sarthakkkumar",
+    linkedin: "https://www.linkedin.com/in/sarthakkkkumar",
   },
   resume: {
     href: "/sarthak-kumar-resume.pdf",
