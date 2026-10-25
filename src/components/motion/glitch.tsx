@@ -32,6 +32,7 @@ export function Glitch({ children, layer, firstAt = 1900 }: { children: ReactNod
       el.classList.remove("is-glitching");
       void el.offsetWidth; // restart the keyframes
       el.classList.add("is-glitching");
+      window.dispatchEvent(new Event("signal:glitch"));
       later(() => {
         el.classList.remove("is-glitching");
         busy = false;

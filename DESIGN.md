@@ -19,6 +19,7 @@ colors:
   glass-shadow: "rgb(0 0 0 / 0.18)"
   glass-text-shadow: "rgb(0 0 0 / 0.35)"
   vignette: "rgb(6 9 12 / 0.75)"
+  signal-cyan: "#52d3f2"
 typography:
   display:
     fontFamily: "Mona Sans, ui-sans-serif, system-ui, sans-serif"
@@ -172,12 +173,12 @@ Deep blue-graphite under a faint engineering-paper dot grid, with warm off-white
 - **Ink Third** (ink-3): metadata, stacks, captions, diagram arrows, link underline at rest, square "blocked" outline mark.
 
 ### Background
-- **Dot field:** one fixed canvas behind all content draws a 28px engineering-paper grid of 1.4px square dots in ink at 12% opacity, drifting at 0.12x the scroll. On load a ripple runs out from the hero (about 2.4s); a slow diagonal band of light sweeps the field roughly every 14s. Around a mouse pointer a 190px lens parts the dots by up to 14px, brightens them by up to 50% and swells them. Idles at 30fps, pauses in background tabs, and draws one still frame under reduced motion. Touch devices get the field without the lens.
+- **Signal field (WebGL):** one fixed canvas renders the 28px engineering-paper dot grid in a fragment shader: ink dots at 16% that drift at 0.12x the scroll, a load ripple from the hero (2.4s), a slow diagonal light band (~14s) and a soft roll bar sweeping down the screen (~10s per pass), plus a fine signal grain. Around a mouse pointer a 190px lens parts and swells the dots under a faint `signal-cyan` haze. **Glitch bursts** (about 300ms of stepped intensity) tear horizontal bands sideways by up to 75px, split them into amber and `signal-cyan` channels with block noise and scanlines; they fire every 9-14s and whenever the hero name glitches. Capped at 1.5x pixel density, idles at 30fps, pauses in background tabs, one still frame under reduced motion; falls back to the canvas 2D dot field without WebGL.
 - **Vignette:** a fixed radial scrim darkens the screen edges to `vignette` for depth.
 - Surfaces (panels, tiles, footer) are opaque, so the field only shows on the open ground between them.
 
 ### Named Rules
-**The One Lamp Rule.** Amber marks what is live or what you should press next, and the focus ring. The one licensed exception is the amber channel that flickers through the name during a glitch burst (user request). If a new use is none of these, it is ink.
+**The One Lamp Rule.** Amber marks what is live or what you should press next, and the focus ring. The licensed exceptions are the amber channels that flicker through the name and the background during a glitch burst (user request); `signal-cyan` lives only inside those bursts and the cursor haze. If a new use is none of these, it is ink.
 
 **The Tone Step Rule.** A container separates from its parent by moving one graphite step up, never by a border or shadow. Tiles that sit side by side are split by a 1px gap that lets the ground show through.
 

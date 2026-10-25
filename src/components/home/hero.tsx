@@ -32,10 +32,10 @@ export async function Hero() {
 
         <div className="mt-[clamp(28px,4.5svh,64px)] grid gap-12 lg:min-h-0 lg:flex-1 lg:grid-cols-12 lg:gap-10">
           <div className="flex flex-col lg:col-span-5 lg:min-h-0">
-            <p {...line(6)} className="t-stagger-line max-w-[30ch] text-[clamp(22px,2vw,28px)] leading-[1.3] text-ink">
+            <p {...line(6)} className="t-stagger-line max-w-[30ch] text-[clamp(22px,2vw,28px)] leading-[1.3] text-ink lg:max-w-[34ch] lg:text-[clamp(24px,min(2vw,3.4svh),32px)] lg:leading-[1.22]">
               {profile.headline}
             </p>
-            <p {...line(7)} className="t-stagger-line mt-[clamp(16px,2.6svh,28px)] max-w-[54ch] text-ink-2">
+            <p {...line(7)} className="t-stagger-line mt-[clamp(16px,2.6svh,28px)] max-w-[54ch] text-ink-2 lg:text-[clamp(17px,min(1.2vw,2.2svh),19px)] lg:leading-[1.6]">
               {profile.heroDescription}
             </p>
             <div {...line(8)} className="t-stagger-line mt-[clamp(20px,3svh,32px)] flex flex-wrap gap-3">
@@ -47,16 +47,21 @@ export async function Hero() {
               </a>
             </div>
 
-            <ul className="mt-10 lg:mt-auto lg:pt-6 [@media(min-width:1024px)_and_(max-height:820px)]:hidden" aria-label="Projects">
+            <ul
+              className="mt-10 lg:mt-auto lg:pt-[clamp(16px,3svh,36px)] lg:grid lg:grid-cols-2 lg:gap-x-8 [@media(min-width:1024px)_and_(max-height:760px)]:pt-3 [@media(min-width:1024px)_and_(max-height:680px)]:hidden"
+              aria-label="Projects"
+            >
               {projects.map((p, i) => (
                 <li key={p.slug} {...line(9 + i)} className="t-stagger-line">
                   <a
                     href={`#project-${p.slug}`}
-                    className="group -mx-3 flex min-h-11 items-center gap-4 px-3 py-1.5 transition-colors duration-150 hover:bg-surface-1"
+                    className="group -mx-3 flex min-h-11 items-center gap-4 px-3 py-1.5 transition-colors duration-150 hover:bg-surface-1 lg:min-h-10 lg:gap-3 lg:py-0.5 [@media(min-width:1024px)_and_(max-height:760px)]:min-h-9 [@media(min-width:1024px)_and_(max-height:760px)]:py-0"
                   >
                     <StatusMark status={p.status} />
                     <span className="flex-none whitespace-nowrap font-semibold text-ink">{p.title}</span>
-                    <span className="hidden min-w-0 flex-1 text-[15px] leading-snug text-ink-3 sm:inline">{p.tagline}</span>
+                    <span className="hidden min-w-0 flex-1 text-[15px] leading-snug text-ink-3 sm:inline lg:hidden">
+                      {p.tagline}
+                    </span>
                     <span className="ml-auto flex-none whitespace-nowrap text-[15px] text-ink-2">{statusLabel[p.status]}</span>
                   </a>
                 </li>

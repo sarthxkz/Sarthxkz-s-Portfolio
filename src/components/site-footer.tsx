@@ -47,12 +47,17 @@ export function SiteFooter() {
             </li>
           </ul>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[15px] text-ink-2">
-            <p>
-              © <CurrentYear /> {profile.name}. Built with Next.js. No tracking, no cookies.
+          <BackToTop />
+        </div>
+
+        <div className="mt-14 flex flex-col gap-3 text-[15px] md:flex-row md:items-baseline md:justify-between">
+          <div>
+            <p className="text-ink">
+              © <CurrentYear /> {profile.name}. All rights reserved.
             </p>
-            <BackToTop />
+            <p className="mt-1 text-ink-2">Designed by Sarthak</p>
           </div>
+          <p className="text-ink-3">Built with Next.js. No tracking, no cookies.</p>
         </div>
       </div>
     </footer>

@@ -3,7 +3,7 @@ import { Mona_Sans, JetBrains_Mono } from "next/font/google"; // taste-skill-ign
 import { profile } from "@/content/profile";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { DotField } from "@/components/motion/dot-field";
+import { SignalField } from "@/components/motion/signal-field";
 import "./globals.css";
 
 const mona = Mona_Sans({
@@ -61,7 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script dangerouslySetInnerHTML={{ __html: jsFlag }} />
       </head>
       <body>
-        <DotField />
+        <SignalField />
         <a href="#main" className="skip-link">
           Skip to content
         </a>
