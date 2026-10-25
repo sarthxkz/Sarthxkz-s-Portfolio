@@ -1,0 +1,53 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "files": [
+          ".impeccable/mocks/decision/r1/assigned.html"
+        ],
+        "createdAt": "2026-10-23T06:43:34.806Z",
+        "reason": "assistant decided: throwaway low-fidelity decision-page sketch, gitignored, never shipped; the site uses Mona Sans"
+      },
+      {
+        "rule": "overused-font",
+        "value": "arial",
+        "files": [
+          ".impeccable/mocks/decision/r1/pick.html"
+        ],
+        "createdAt": "2026-10-23T06:43:34.937Z",
+        "reason": "assistant decided: throwaway low-fidelity decision-page sketch, gitignored, never shipped; the site uses Mona Sans"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial",
+        "files": [
+          ".impeccable/mocks/decision/r1/assigned.html"
+        ],
+        "createdAt": "2026-10-25T14:34:25.939Z",
+        "reason": "assistant decided: throwaway decision-page sketch, gitignored, never shipped; the site uses Mona Sans per DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial",
+        "files": [
+          ".impeccable/mocks/decision/r1/pick.html"
+        ],
+        "createdAt": "2026-10-25T14:34:26.042Z",
+        "reason": "assistant decided: throwaway decision-page sketch, gitignored, never shipped; the site uses Mona Sans per DESIGN.md"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "arial narrow",
+        "files": [
+          ".impeccable/mocks/decision/r1/depot.html"
+        ],
+        "createdAt": "2026-10-25T14:34:26.156Z",
+        "reason": "assistant decided: throwaway decision-page sketch, gitignored, never shipped; the site uses Mona Sans per DESIGN.md"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+# Imported by Vybe's Caddyfile (deploy/sites/*.caddy on the VM). Caddy gets and renews
+# the certificates itself once DNS for both names points at 161.153.37.106.
+sarthxkz.in {
+	encode zstd gzip
+	header -Server
+	reverse_proxy portfolio:3000
+}
+
+www.sarthxkz.in {
+	redir https://sarthxkz.in{uri} permanent
+}

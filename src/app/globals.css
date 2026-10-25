@@ -1,26 +1,592 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------------
+   Tokens
+   Graphite ground stepped by tone, off-white ink, one accent (sodium amber)
+   reserved for "live" and the primary action.
+--------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ground: #0c1116;
+  --surface-1: #121920;
+  --surface-2: #182129;
+  --surface-3: #212b35;
+  --rule: #27323c;
+  --ink: #edebe6;
+  --ink-2: #a9aeb3;
+  --ink-3: #88919a;
+  --accent: #f2a93b;
+  --accent-ink: #1a1206;
+
+  --margin: clamp(16px, 4vw, 56px);
+  --section-gap: clamp(120px, 16vw, 224px);
+
+  /* Motion tokens (transitions.dev scale) */
+  --duration-stagger: 40ms;
+  --duration-micro: 80ms;
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+  --duration-medium: 350ms;
+  --duration-slow: 400ms;
+  --duration-very-slow: 500ms;
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --distance-base: 8px;
+  --distance-medium: 12px;
+  --blur-small: 2px;
+  --blur-medium: 3px;
+
+  /* Recipe variables */
+  --stagger-dur: 600ms;
+  --stagger-distance: 16px;
+  --stagger-stagger: 70ms;
+  --stagger-blur: 3px;
+  --stagger-ease: var(--ease-smooth-out);
+
+  --text-morph-dur: 180ms;
+  --text-morph-resize-dur: 240ms;
+  --text-morph-blur: 2px;
+  --text-morph-ease: var(--ease-smooth-out);
+
+  --digit-dur: 500ms;
+  --digit-distance: 8px;
+  --digit-stagger: 70ms;
+  --digit-blur: 2px;
+  --digit-ease: var(--ease-out-strong);
+
+  --learn-shift: 3px;
+  --learn-spread: 8deg;
+  --learn-in: 350ms;
+  --learn-out: 350ms;
+  --learn-ease: var(--ease-smooth-out);
+
+  --dropdown-open-dur: 250ms;
+  --dropdown-close-dur: 150ms;
+  --dropdown-pre-scale: 0.97;
+  --dropdown-closing-scale: 0.99;
+  --dropdown-ease: var(--ease-smooth-out);
+
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ground: var(--ground);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-rule: var(--rule);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --font-sans: var(--font-mona), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace; /* taste-skill-ignore: code blocks only */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+html {
+  background: var(--ground);
+  scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: transparent; /* the ground lives on <html> so the dot grid can sit between them */
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 420;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+
+::selection { background: var(--ink); color: var(--ground); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+a { text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+
+* { scrollbar-width: thin; scrollbar-color: var(--surface-3) var(--ground); }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--ground); }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border: 2px solid var(--ground); }
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Width axis of Mona Sans does the display work. Titles of things run widest. */
+.display {
+  font-variation-settings: "wdth" 112;
+  font-weight: 640;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.heading {
+  font-variation-settings: "wdth" 116;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+/* Titles of things run widest; declared after .display so it wins. */
+.display.chapter-title, .display.case-title { font-variation-settings: "wdth" 125; }
+
+.frame {
+  width: 100%;
+  max-width: 1600px;
+  margin-inline: auto;
+  padding-inline: var(--margin);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--margin);
+  top: 12px;
+  z-index: 100;
+  width: 1px;
+  height: 1px; /* taste-skill-ignore: visually hidden skip link, not a rule */
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+.skip-link:focus {
+  width: auto;
+  height: auto;
+  padding: 10px 14px;
+  clip-path: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Controls
+--------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  font-weight: 600;
+  font-size: 17px;
+  white-space: nowrap;
+  transition:
+    transform 160ms var(--ease-out-strong),
+    background-color var(--duration-quick) ease,
+    color var(--duration-quick) ease;
+}
+.btn:active { transform: scale(0.96); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-secondary { background: var(--surface-2); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { background: #f6b856; }
+  .btn-secondary:hover { background: var(--surface-3); }
+}
+
+.link {
+  color: var(--ink);
+  text-decoration-line: underline;
+  text-decoration-color: var(--ink-3);
+  transition: text-decoration-color var(--duration-quick) ease, color var(--duration-quick) ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .link:hover { text-decoration-color: var(--ink); }
+}
+
+/* Status marks: state carried by form, not only colour. */
+.mark {
+  display: inline-block;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.mark-live { background: var(--accent); }
+.mark-verified { background: var(--ink); }
+.mark-beta { border: 2px solid var(--ink); }
+.mark-in-progress { border: 2px dashed var(--ink-2); }
+.mark-concept { border: 2px solid var(--ink-3); border-radius: 0; }
+
+/* ---------------------------------------------------------------------------
+   Reveal on enter (texts reveal recipe, triggered by IntersectionObserver).
+   Content is only hidden when JS has marked the document, so nothing stays
+   invisible if scripts fail.
+--------------------------------------------------------------------------- */
+@layer base {
+  span.t-stagger-line { display: block; }
+}
+.js .t-stagger-line {
+  opacity: 0;
+  transform: translateY(var(--stagger-distance));
+  filter: blur(var(--stagger-blur));
+  transition:
+    opacity var(--stagger-dur) var(--stagger-ease),
+    transform var(--stagger-dur) var(--stagger-ease),
+    filter var(--stagger-dur) var(--stagger-ease);
+  transition-delay: calc(var(--stagger-stagger) * var(--i, 0));
+}
+.js .t-stagger.is-shown .t-stagger-line {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Nothing waits for a reveal: content is simply there. */
+  .js .t-stagger-line {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+  .js .plate[data-active="false"] { opacity: 1; }
+}
+
+/* Hero name: the typeface's width axis stretches into place once. */
+.js .hero-name {
+  font-variation-settings: "wdth" 75;
+  font-weight: 380;
+  transition:
+    font-variation-settings 1100ms var(--ease-out-strong),
+    font-weight 1100ms var(--ease-out-strong);
+}
+.js .t-stagger.is-shown .hero-name {
+  font-variation-settings: "wdth" 112;
+  font-weight: 640;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-name { transition: none; font-variation-settings: "wdth" 112; font-weight: 640; }
+}
+
+/* ---------------------------------------------------------------------------
+   Text morph (Copy email -> Copied)
+--------------------------------------------------------------------------- */
+.t-morph { white-space: nowrap; }
+.t-morph-swap {
+  display: inline-grid;
+  vertical-align: bottom;
+  justify-items: start;
+  transition: width var(--text-morph-resize-dur) var(--text-morph-ease);
+}
+.t-morph-swap > span {
+  grid-area: 1 / 1;
+  white-space: pre;
+  transition:
+    opacity var(--text-morph-dur) var(--text-morph-ease),
+    filter var(--text-morph-dur) var(--text-morph-ease);
+}
+.t-morph-new { opacity: 0; filter: blur(var(--text-morph-blur)); }
+.t-morph-swap.is-morphing .t-morph-old { opacity: 0; filter: blur(var(--text-morph-blur)); }
+.t-morph-swap.is-morphing .t-morph-new { opacity: 1; filter: blur(0); }
+@media (prefers-reduced-motion: reduce) {
+  .t-morph-swap, .t-morph-swap > span { transition: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Number pop-in (Bunkr calculator results)
+--------------------------------------------------------------------------- */
+@keyframes t-digit-pop-in {
+  0% {
+    transform: translateY(var(--digit-distance));
+    opacity: 0;
+    filter: blur(var(--digit-blur));
+  }
+  100% { transform: translateY(0); opacity: 1; filter: blur(0); }
+}
+.t-digit-group { display: inline-flex; align-items: baseline; }
+.t-digit { display: inline-block; }
+.t-digit-group.is-animating .t-digit { animation: t-digit-pop-in var(--digit-dur) var(--digit-ease) both; }
+.t-digit-group.is-animating .t-digit[data-stagger="1"] { animation-delay: var(--digit-stagger); }
+.t-digit-group.is-animating .t-digit[data-stagger="2"] { animation-delay: calc(var(--digit-stagger) * 2); }
+.t-digit-group.is-animating .t-digit[data-same] { animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .t-digit-group .t-digit { animation: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Learn more hover (chevron spreads into an arrow)
+--------------------------------------------------------------------------- */
+.t-learn-chevron {
+  display: inline-flex;
+  transform: translateX(0);
+  transition: transform var(--learn-out) var(--learn-ease);
+}
+.t-learn-arm {
+  transform-box: view-box;
+  transform-origin: 10px 8px;
+  vector-effect: non-scaling-stroke;
+  transition: transform var(--learn-out) var(--learn-ease);
+}
+@media (hover: hover) and (pointer: fine) {
+  .t-learn:hover .t-learn-chevron { transform: translateX(var(--learn-shift)); transition-duration: var(--learn-in); }
+  .t-learn:hover .t-learn-arm { transition-duration: var(--learn-in); }
+  .t-learn:hover .t-learn-arm-top { transform: rotate(var(--learn-spread)); }
+  .t-learn:hover .t-learn-arm-bot { transform: rotate(calc(var(--learn-spread) * -1)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-learn-chevron, .t-learn-arm { transition: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Menu dropdown (mobile navigation)
+--------------------------------------------------------------------------- */
+.t-dropdown {
+  transform-origin: top right;
+  transform: scale(var(--dropdown-pre-scale));
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    transform var(--dropdown-open-dur) var(--dropdown-ease),
+    opacity var(--dropdown-open-dur) var(--dropdown-ease),
+    visibility 0s linear var(--dropdown-open-dur);
+}
+.t-dropdown.is-open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transition:
+    transform var(--dropdown-open-dur) var(--dropdown-ease),
+    opacity var(--dropdown-open-dur) var(--dropdown-ease),
+    visibility 0s;
+}
+.t-dropdown.is-closing {
+  transform: scale(var(--dropdown-closing-scale));
+  opacity: 0;
+  pointer-events: none;
+  visibility: visible;
+  transition:
+    transform var(--dropdown-close-dur) var(--dropdown-ease),
+    opacity var(--dropdown-close-dur) var(--dropdown-ease);
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-dropdown { transition: none !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   Work index: active plate reveal (clip-path inset, Emil's image reveal)
+--------------------------------------------------------------------------- */
+.plate {
+  clip-path: inset(0 0 0 0);
+  transition:
+    clip-path var(--duration-slow) var(--ease-in-out-strong),
+    opacity var(--duration-fast) ease;
+}
+.js .plate[data-active="false"] {
+  clip-path: inset(0 0 100% 0);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .plate { transition: opacity 200ms ease; clip-path: none !important; }
+}
+
+/* The portrait settles from a slight zoom as its plate opens. */
+.portrait { transition: scale 1400ms var(--ease-out-strong); }
+.js .plate[data-active="false"] .portrait { scale: 1.08; }
+@media (prefers-reduced-motion: reduce) {
+  .portrait { transition: none; scale: 1 !important; }
+}
+
+.screenshot-outline { outline: 1px solid oklch(1 0 0 / 0.1); outline-offset: -1px; }
+
+/* View transitions between home and case studies */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-fast);
+  animation-timing-function: var(--ease-smooth-out);
+}
+::view-transition-group(*) {
+  animation-duration: var(--duration-slow);
+  animation-timing-function: var(--ease-in-out-strong);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+/* Only real overlays float. */
+.overlay-shadow { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45); } /* taste-skill-ignore: mobile menu overlay */
+
+/* ---------------------------------------------------------------------------
+   Line-mask reveal (words and letters rise from behind their own baseline)
+--------------------------------------------------------------------------- */
+.split-word { display: inline-block; white-space: nowrap; }
+.split-unit {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.16em;
+  margin-bottom: -0.16em;
+}
+.split-unit > span { display: inline-block; }
+.js .t-stagger .split-unit > span {
+  transform: translateY(112%);
+  transition: transform 1100ms var(--ease-out-strong);
+  transition-delay: var(--sd, 0ms);
+}
+.js .t-stagger.is-shown .split-unit > span { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .t-stagger .split-unit > span { transform: none; transition: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Screens reel: crossfade on a slow zoom, with a timer bar on the active tab
+--------------------------------------------------------------------------- */
+.reel-frame {
+  opacity: 0;
+  scale: 1.04;
+  transition: opacity 900ms var(--ease-smooth-out), scale 6000ms linear;
+}
+.reel-frame[data-active="true"] { opacity: 1; scale: 1; }
+.reel-progress { scale: 0 1; }
+.reel-progress.is-full { scale: 1 1; }
+.reel-progress.is-running { animation: reel-fill linear forwards; }
+@keyframes reel-fill { from { scale: 0 1; } to { scale: 1 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .reel-frame { transition: opacity 200ms ease; scale: 1 !important; }
+  .reel-progress.is-running { animation: none; scale: 1 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Card tilt (transitions.dev), pointer-driven lean on the hero cover
+--------------------------------------------------------------------------- */
+.t-tilt-card {
+  transform: perspective(1200px) rotateX(var(--tilt-rx, 0deg)) rotateY(var(--tilt-ry, 0deg));
+  transition: transform 1000ms var(--ease-smooth-out);
+  will-change: transform;
+}
+.t-tilt-card.is-tilting { transition: transform 400ms var(--ease-smooth-out); }
+.hero-cover { transition: scale 1400ms var(--ease-out-strong); }
+.js .t-stagger:not(.is-shown) .hero-cover { scale: 1.06; }
+@media (prefers-reduced-motion: reduce) {
+  .t-tilt-card { transform: none !important; transition: none !important; }
+  .hero-cover { transition: none; scale: 1 !important; }
+}
+
+/* ---------------------------------------------------------------------------
+   System diagram packets: one dot crossing each connection, on a loop
+--------------------------------------------------------------------------- */
+.packet {
+  position: absolute;
+  left: 1.5px;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink);
+  transform: translateY(14px);
+  animation: packet-y 2800ms var(--ease-in-out-strong) infinite;
+  animation-delay: var(--pd, 0s);
+}
+@keyframes packet-y {
+  0% { transform: translateY(0); opacity: 0; }
+  12%, 70% { opacity: 1; }
+  82%, 100% { transform: translateY(30px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .packet { animation: none; transform: translateY(14px); }
+}
+
+/* ---------------------------------------------------------------------------
+   Stacked chapters: the covered panel settles from its top edge
+--------------------------------------------------------------------------- */
+.stack-inner { transform-origin: 50% 0; }
+
+/* Navigation slides away while reading down and returns on the way up. */
+.site-header { transition: transform 350ms var(--ease-smooth-out); }
+.site-header[data-hidden="true"] { transform: translateY(-100%); }
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Hero name glitch: torn horizontal bands of two offset copies (an amber
+   channel and a dim ghost) plus a jittering base, in hard steps. ~640ms.
+--------------------------------------------------------------------------- */
+.glitch { position: relative; display: block; }
+.glitch-base { display: block; }
+.glitch-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+}
+.glitch-layer--a { color: var(--accent); }
+.glitch-layer--b { color: var(--ink-3); }
+.glitch.is-glitching .glitch-layer--a { animation: glitch-a 640ms steps(1, end) both; }
+.glitch.is-glitching .glitch-layer--b { animation: glitch-b 640ms steps(1, end) both; }
+.glitch.is-glitching .glitch-base { animation: glitch-base 640ms steps(1, end) both; }
+
+@keyframes glitch-a {
+  0%   { opacity: 0.95; clip-path: inset(12% 0 62% 0); transform: translate(-0.045em, 0); }
+  14%  { clip-path: inset(58% 0 22% 0); transform: translate(0.035em, 0); }
+  28%  { clip-path: inset(34% 0 48% 0); transform: translate(-0.02em, 0); }
+  42%  { clip-path: inset(76% 0 6% 0); transform: translate(0.05em, 0); }
+  56%  { clip-path: inset(2% 0 84% 0); transform: translate(-0.03em, 0); }
+  70%  { clip-path: inset(44% 0 38% 0); transform: translate(0.015em, 0); }
+  84%  { clip-path: inset(66% 0 16% 0); transform: translate(-0.01em, 0); }
+  100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: none; }
+}
+@keyframes glitch-b {
+  0%   { opacity: 0.9; clip-path: inset(60% 0 18% 0); transform: translate(0.05em, 0); }
+  14%  { clip-path: inset(8% 0 70% 0); transform: translate(-0.04em, 0); }
+  28%  { clip-path: inset(70% 0 10% 0); transform: translate(0.025em, 0); }
+  42%  { clip-path: inset(22% 0 60% 0); transform: translate(-0.05em, 0); }
+  56%  { clip-path: inset(48% 0 30% 0); transform: translate(0.03em, 0); }
+  70%  { clip-path: inset(14% 0 74% 0); transform: translate(-0.015em, 0); }
+  84%  { clip-path: inset(82% 0 4% 0); transform: translate(0.01em, 0); }
+  100% { opacity: 0; clip-path: inset(0 0 100% 0); transform: none; }
+}
+@keyframes glitch-base {
+  0%   { transform: translate(0.012em, 0) skewX(-4deg); }
+  14%  { transform: translate(-0.01em, 0); }
+  28%  { transform: none; }
+  42%  { transform: translate(0.015em, 0) skewX(3deg); }
+  56%  { transform: translate(-0.006em, 0); }
+  70%, 100% { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glitch-layer, .glitch-base { animation: none !important; }
+  .glitch-layer { display: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Engineering-paper dot grid behind the page: a faint base layer that drifts
+   with the scroll, and a brighter copy masked to a circle around the mouse.
+--------------------------------------------------------------------------- */
+.dot-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle at center, rgb(237 235 230 / 0.13) 1px, transparent 1.4px); /* taste-skill-ignore: dot pattern the user chose */
+  background-size: 28px 28px;
+}
+.dot-grid--glow {
+  background-image: radial-gradient(circle at center, rgb(237 235 230 / 0.55) 1.2px, transparent 1.7px); /* taste-skill-ignore: dot pattern the user chose */
+  -webkit-mask-image: radial-gradient(200px circle at var(--mx, -999px) var(--my, -999px), #000, transparent); /* taste-skill-ignore */
+  mask-image: radial-gradient(200px circle at var(--mx, -999px) var(--my, -999px), #000, transparent); /* taste-skill-ignore */
+  opacity: 0;
+  transition: opacity 400ms ease;
+}
+.dot-grid--glow[data-on="true"] { opacity: 1; }
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .dot-grid--glow { display: none; }
 }

@@ -1,0 +1,24 @@
+# The portfolio on the Oracle VM. It publishes no port: Vybe's Caddy (which owns 80/443)
+# reaches it over Vybe's `edge` network and serves sarthxkz.in with automatic HTTPS.
+# Run from this folder on the VM: docker compose up -d --build
+name: portfolio
+
+services:
+  portfolio:
+    build:
+      context: ..
+      args:
+        NEXT_PUBLIC_SITE_URL: https://sarthxkz.in
+    security_opt: ['no-new-privileges:true']
+    cap_drop: [ALL]
+    mem_limit: 512m
+    networks: [edge]
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options: { max-size: 10m, max-file: '3' }
+
+networks:
+  edge:
+    external: true
+    name: vybe_edge

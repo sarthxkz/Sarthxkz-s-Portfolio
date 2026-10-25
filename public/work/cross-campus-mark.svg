@@ -1,0 +1,18 @@
+<!-- Origin: Cross Campus brand mark, from its repo (src/components/brand/logo-mark.tsx), dark-theme tokens, set on its dark app background. Not generated. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="cc" x1="10" y1="12" x2="38" y2="36" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="oklch(0.66 0.19 266)" />
+      <stop offset="60%" stop-color="oklch(0.68 0.17 300)" />
+      <stop offset="100%" stop-color="oklch(0.78 0.16 58)" />
+    </linearGradient>
+  </defs>
+  <rect width="48" height="48" fill="oklch(0.135 0.018 265)" />
+  <g transform="translate(8 8)">
+    <path d="M6 6 L26 26 M26 6 L6 26" stroke="url(#cc)" stroke-width="3.4" stroke-linecap="round" fill="none" />
+    <circle cx="6" cy="6" r="3" fill="oklch(0.66 0.19 266)" />
+    <circle cx="26" cy="6" r="3" fill="oklch(0.68 0.17 300)" />
+    <circle cx="6" cy="26" r="3" fill="oklch(0.68 0.17 300)" />
+    <circle cx="26" cy="26" r="3" fill="oklch(0.78 0.16 58)" />
+  </g>
+</svg>

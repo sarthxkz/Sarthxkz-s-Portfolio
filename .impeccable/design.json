@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T00:00:00Z",
+  "title": "Design System: Sarthak Kumar",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Sodium Amber",
+        "canonical": "#f2a93b",
+        "tonalRamp": [
+          "#2a1a04",
+          "#4a2f08",
+          "#73490d",
+          "#a06614",
+          "#cc841f",
+          "#f2a93b",
+          "#f8c77a",
+          "#fde6c0"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Amber Lit",
+        "canonical": "#f6b856",
+        "tonalRamp": [
+          "#2c1d07",
+          "#4d330c",
+          "#784f12",
+          "#a46d1b",
+          "#d08f2e",
+          "#f6b856",
+          "#f9cf8c",
+          "#fde9c8"
+        ]
+      },
+      "accent-ink": {
+        "role": "primary",
+        "displayName": "Amber Shadow Ink",
+        "canonical": "#1a1206",
+        "tonalRamp": [
+          "#1a1206",
+          "#33240d",
+          "#4d3614",
+          "#6b4c1d",
+          "#8c6427",
+          "#b08135",
+          "#d4a457",
+          "#f0d3a2"
+        ]
+      },
+      "ground": {
+        "role": "neutral",
+        "displayName": "Graphite Ground",
+        "canonical": "#0c1116",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "surface-1": {
+        "role": "neutral",
+        "displayName": "Graphite Step 1",
+        "canonical": "#121920",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Graphite Step 2",
+        "canonical": "#182129",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "surface-3": {
+        "role": "neutral",
+        "displayName": "Graphite Step 3",
+        "canonical": "#212b35",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule Graphite",
+        "canonical": "#27323c",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm Paper Ink",
+        "canonical": "#edebe6",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink Second",
+        "canonical": "#a9aeb3",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink Third",
+        "canonical": "#88919a",
+        "tonalRamp": [
+          "#0c1116",
+          "#121920",
+          "#182129",
+          "#212b35",
+          "#27323c",
+          "#88919a",
+          "#a9aeb3",
+          "#edebe6"
+        ]
+      },
+      "dot": {
+        "role": "neutral",
+        "displayName": "Grid Dot",
+        "canonical": "rgb(237 235 230 / 0.13)",
+        "note": "ink at 13%; glow layer at 55%"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero and footer name on one line; hero enters at wdth 75 / 380 and stretches to wdth 112 / 640."
+      },
+      "display-title": {
+        "displayName": "Display Title",
+        "purpose": "Names of things at wdth 125: chapter titles, case-study titles; the calculator result number uses display at wdth 112."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings at wdth 116; contact email at clamp(26px, 3.5vw, 54px)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Block headings, skill groups, activity titles at wdth 108."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "One-sentence promise and case-study summaries, 30 to 44ch."
+      },
+      "body-large": {
+        "displayName": "Body Large",
+        "purpose": "Prose in About, chapters and case studies, 62 to 72ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base text, nav wordmark, footer links."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Metadata, status labels, captions, field labels, nav items; sentence case."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Literal source code blocks only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overlay",
+        "value": "0 12px 32px rgba(0, 0, 0, 0.45)",
+        "purpose": "Mobile navigation dropdown only; only real overlays float."
+      },
+      {
+        "name": "screenshot-outline",
+        "value": "outline: 1px solid oklch(1 0 0 / 0.1); outline-offset: -1px",
+        "purpose": "Hairline inner edge on screenshots and marks so they hold against the graphite ground."
+      },
+      {
+        "name": "chapter-settle",
+        "value": "scale 0.92 + ground shade opacity 0.72",
+        "purpose": "Depth for a covered chapter panel, scrubbed to scroll."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-stagger",
+        "value": "40ms",
+        "purpose": "Scale step."
+      },
+      {
+        "name": "duration-micro",
+        "value": "80ms",
+        "purpose": "Scale step."
+      },
+      {
+        "name": "duration-quick",
+        "value": "150ms",
+        "purpose": "Colour and underline hover transitions."
+      },
+      {
+        "name": "duration-fast",
+        "value": "250ms",
+        "purpose": "Nav underline, dropdown open, root view transition."
+      },
+      {
+        "name": "duration-medium",
+        "value": "350ms",
+        "purpose": "Learn-more chevron, nav hide-on-scroll."
+      },
+      {
+        "name": "duration-slow",
+        "value": "400ms",
+        "purpose": "Plate clip-path reveal, shared-element view transition."
+      },
+      {
+        "name": "duration-very-slow",
+        "value": "500ms",
+        "purpose": "Digit pop-in, attendance bar fill."
+      },
+      {
+        "name": "ease-smooth-out",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Default ease for reveals, tabs, dropdown, nav, tilt."
+      },
+      {
+        "name": "ease-out-strong",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Line-mask rise, hero width stretch, button press, image settles."
+      },
+      {
+        "name": "ease-in-out-strong",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Clip-path plate reveal, view-transition groups, diagram packets."
+      },
+      {
+        "name": "texts-reveal",
+        "value": "opacity 0 to 1, translateY 16px, blur 3px; 600ms smooth-out; 70ms stagger by --i",
+        "purpose": "Every block entering the viewport (IntersectionObserver, -12% bottom margin). Reduced motion: 200ms opacity only."
+      },
+      {
+        "name": "line-mask-split",
+        "value": "unit translateY 112% to 0 inside overflow-hidden box; 1100ms ease-out-strong; 55ms per word, 32ms per letter (hero 38ms)",
+        "purpose": "Headings and titles. Reduced motion: static."
+      },
+      {
+        "name": "hero-width-stretch",
+        "value": "wdth 75 / 380 to wdth 112 / 640; 1100ms ease-out-strong; scroll scrub yPercent -18, opacity 0.2",
+        "purpose": "Hero name, once. Reduced motion: final state, no scrub."
+      },
+      {
+        "name": "stacked-chapters",
+        "value": "GSAP ScrollTrigger scrub 0.5, start top bottom, end top top+=88; covered panel scale 0.92 from top edge, shade opacity 0.72",
+        "purpose": "Project chapters at >=1024px with motion allowed; plain stack otherwise."
+      },
+      {
+        "name": "screens-reel",
+        "value": "crossfade 900ms smooth-out, scale 1.04 to 1 over 6000ms linear, 5200ms hold with 2px progress bar",
+        "purpose": "Polaris screens. Pauses on hover/focus; no auto-advance under reduced motion."
+      },
+      {
+        "name": "card-tilt",
+        "value": "perspective 1200px, max 7deg; 400ms tracking, 1000ms return; hero cover settles from scale 1.06 over 1400ms",
+        "purpose": "Hero screenshot, mouse pointer only. Reduced motion: flat."
+      },
+      {
+        "name": "diagram-packet",
+        "value": "6px dot, translateY 0 to 30px, 2800ms ease-in-out-strong infinite, 0.7s stagger",
+        "purpose": "One packet per diagram connection. Reduced motion: rests mid-track."
+      },
+      {
+        "name": "plate-reveal",
+        "value": "clip-path inset(0 0 100% 0) to inset(0); 400ms ease-in-out-strong; portrait scale 1.08 to 1 over 1400ms",
+        "purpose": "About portrait. Reduced motion: opacity only."
+      },
+      {
+        "name": "text-morph",
+        "value": "180ms crossfade with 2px blur, 240ms width resize, smooth-out",
+        "purpose": "Copy email to Copied."
+      },
+      {
+        "name": "number-pop-in",
+        "value": "changed digits translateY 8px, blur 2px to 0; 500ms ease-out-strong; last digit +70ms",
+        "purpose": "Calculator result."
+      },
+      {
+        "name": "learn-more-hover",
+        "value": "chevron +3px, arms rotate +/-8deg; 350ms smooth-out",
+        "purpose": "Learn-more links on fine pointers."
+      },
+      {
+        "name": "menu-dropdown",
+        "value": "open scale 0.97 to 1, 250ms; close to 0.99, 150ms; origin top right",
+        "purpose": "Mobile navigation."
+      },
+      {
+        "name": "nav-hide-on-scroll",
+        "value": "translateY(-100%), 350ms smooth-out; hides scrolling down past 240px, returns on scroll up or focus",
+        "purpose": "Site header. Reduced motion: instant."
+      },
+      {
+        "name": "button-press",
+        "value": "scale 0.96, 160ms ease-out-strong",
+        "purpose": "All buttons on :active."
+      },
+      {
+        "name": "name-glitch",
+        "value": "640ms steps(1,end); clip-path inset bands, translateX up to 0.05em, base skewX up to 4deg",
+        "purpose": "Hero name: once after load, on mouse hover, every 7-11s while visible. Off under reduced motion."
+      },
+      {
+        "name": "dot-grid-drift",
+        "value": "background-position-y = -scrollY * 0.12, rAF-batched",
+        "purpose": "Background depth; static under reduced motion."
+      },
+      {
+        "name": "dot-grid-glow",
+        "value": "200px radial mask at the pointer, opacity 400ms ease",
+        "purpose": "Brightens grid dots near a mouse pointer; hidden on touch and reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Amber fill for the one action per region: Explore my work, Email me.",
+      "html": "<a href=\"#\" class=\"ds-btn ds-btn-primary\">Explore my work</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 16px; white-space: nowrap; text-decoration: none; border: 0; border-radius: 0; cursor: pointer; transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms ease, color 150ms ease; } .ds-btn:active { transform: scale(0.96); } .ds-btn:focus-visible { outline: 2px solid var(--accent, #f2a93b); outline-offset: 3px; border-radius: 2px; } .ds-btn-primary { background: var(--accent, #f2a93b); color: var(--accent-ink, #1a1206); } .ds-btn-primary:hover { background: #f6b856; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Graphite fill for every other action: Contact me, Copy email, Resume, Menu.",
+      "html": "<button type=\"button\" class=\"ds-btn2\">Contact me</button>",
+      "css": ".ds-btn2 { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px; font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; font-weight: 600; font-size: 16px; white-space: nowrap; border: 0; border-radius: 0; cursor: pointer; background: var(--surface-2, #182129); color: var(--ink, #edebe6); transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms ease; } .ds-btn2:hover { background: var(--surface-3, #212b35); } .ds-btn2:active { transform: scale(0.96); } .ds-btn2:focus-visible { outline: 2px solid var(--accent, #f2a93b); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Learn More Link",
+      "kind": "custom",
+      "refersTo": "learn-more",
+      "description": "Text link whose chevron spreads into an arrow on hover.",
+      "html": "<a href=\"#\" class=\"ds-learn\">Read the case study <span class=\"ds-learn-chev\" aria-hidden=\"true\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path class=\"ds-arm ds-arm-top\" d=\"M6 4L10 8\"/><path class=\"ds-arm ds-arm-bot\" d=\"M10 8L6 12\"/></svg></span></a>",
+      "css": ".ds-learn { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; font-weight: 600; color: var(--ink, #edebe6); text-decoration: none; } .ds-learn-chev { display: inline-flex; transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-arm { transform-box: view-box; transform-origin: 10px 8px; transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-learn:hover .ds-learn-chev { transform: translateX(3px); } .ds-learn:hover .ds-arm-top { transform: rotate(8deg); } .ds-learn:hover .ds-arm-bot { transform: rotate(-8deg); } .ds-learn:focus-visible { outline: 2px solid var(--accent, #f2a93b); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Status Marks",
+      "kind": "chip",
+      "refersTo": "status-mark",
+      "description": "State by form: filled amber live, ring beta, dashed ring in progress, filled ink verified, square outline blocked.",
+      "html": "<div class=\"ds-marks\"><span class=\"ds-tag\"><span class=\"ds-mark ds-live\"></span>Live</span><span class=\"ds-tag\"><span class=\"ds-mark ds-beta\"></span>Beta</span><span class=\"ds-tag\"><span class=\"ds-mark ds-prog\"></span>In progress</span><span class=\"ds-tag\"><span class=\"ds-mark ds-ver\"></span>Verified</span><span class=\"ds-tag\"><span class=\"ds-mark ds-blk\"></span>Blocked</span></div>",
+      "css": ".ds-marks { display: flex; flex-wrap: wrap; gap: 20px; } .ds-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; font-size: 15px; color: var(--ink, #edebe6); } .ds-mark { display: inline-block; flex: none; width: 10px; height: 10px; border-radius: 50%; box-sizing: border-box; } .ds-live { background: var(--accent, #f2a93b); } .ds-ver { background: var(--ink, #edebe6); } .ds-beta { border: 2px solid var(--ink, #edebe6); } .ds-prog { border: 2px dashed var(--ink-2, #a9aeb3); } .ds-blk { border: 2px solid var(--ink-3, #88919a); border-radius: 1px; }"
+    },
+    {
+      "name": "Primary Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "64px bar on ground; current section gets a 2px ink underline scaling in from the left.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-word\" href=\"#\">Sarthak Kumar</a><ul><li><a class=\"ds-nl is-current\" href=\"#\">Work</a></li><li><a class=\"ds-nl\" href=\"#\">About</a></li><li><a class=\"ds-nl\" href=\"#\">Contact</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; padding: 0 24px; background: var(--ground, #0c1116); font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; } .ds-nav ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; } .ds-word { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink, #edebe6); font-variation-settings: \"wdth\" 112; text-decoration: none; } .ds-nl { position: relative; display: inline-flex; align-items: center; height: 44px; padding: 0 12px; font-size: 15px; color: var(--ink-2, #a9aeb3); text-decoration: none; transition: color 150ms ease; } .ds-nl::after { content: \"\"; position: absolute; left: 12px; right: 12px; bottom: 8px; height: 2px; background: var(--ink, #edebe6); transform: scaleX(0); transform-origin: left; transition: transform 250ms cubic-bezier(0.22, 1, 0.36, 1); } .ds-nl:hover, .ds-nl.is-current { color: var(--ink, #edebe6); } .ds-nl.is-current::after { transform: scaleX(1); } .ds-nl:focus-visible { outline: 2px solid var(--accent, #f2a93b); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Stepper Field",
+      "kind": "input",
+      "refersTo": "stepper",
+      "description": "Numeric field with minus/plus controls in a graphite-2 bar, tabular centred value.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-lbl\" for=\"ds-n\">Classes conducted</label><div class=\"ds-step\"><button type=\"button\" aria-label=\"Decrease\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M5 12h14\"/></svg></button><input id=\"ds-n\" type=\"number\" value=\"40\"><button type=\"button\" aria-label=\"Increase\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M5 12h14M12 5v14\"/></svg></button></div></div>",
+      "css": ".ds-field { font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; max-width: 320px; } .ds-lbl { font-size: 15px; color: var(--ink-2, #a9aeb3); } .ds-step { display: flex; align-items: stretch; height: 56px; margin-top: 8px; background: var(--surface-2, #182129); } .ds-step button { display: inline-flex; align-items: center; padding: 0 16px; background: none; border: 0; color: var(--ink-2, #a9aeb3); cursor: pointer; transition: color 150ms ease, transform 160ms cubic-bezier(0.23, 1, 0.32, 1); } .ds-step button:hover { color: var(--ink, #edebe6); } .ds-step button:active { transform: scale(0.96); } .ds-step input { flex: 1; min-width: 0; background: transparent; border: 0; text-align: center; font: inherit; font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--ink, #edebe6); appearance: textfield; -moz-appearance: textfield; } .ds-step input::-webkit-inner-spin-button, .ds-step input::-webkit-outer-spin-button { appearance: none; } .ds-step :focus-visible { outline: 2px solid var(--accent, #f2a93b); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Project Chapter",
+      "kind": "card",
+      "refersTo": "chapter-panel",
+      "description": "Square graphite-1 panel: wide title, status tag, summary, links; covered panels settle to scale 0.92 and dim as the next slides over.",
+      "html": "<article class=\"ds-chapter\"><h3 class=\"ds-ch-title\">Polaris</h3><p class=\"ds-ch-meta\"><span class=\"ds-ch-mark\"></span><span class=\"ds-ch-status\">Live</span><span>Web app</span></p><p class=\"ds-ch-sum\">A real summary of what the project does and for whom.</p><p class=\"ds-ch-stack\">Next.js · PostGIS · Supabase</p></article>",
+      "css": ".ds-chapter { background: var(--surface-1, #121920); padding: 40px; border-radius: 0; font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; color: var(--ink, #edebe6); max-width: 520px; } .ds-ch-title { margin: 0; font-size: 88px; font-weight: 640; line-height: 0.9; letter-spacing: -0.04em; font-variation-settings: \"wdth\" 125; } .ds-ch-meta { display: flex; align-items: center; gap: 12px; margin-top: 16px; font-size: 15px; color: var(--ink-3, #88919a); } .ds-ch-status { color: var(--ink, #edebe6); margin-left: -4px; } .ds-ch-mark { width: 10px; height: 10px; border-radius: 50%; background: var(--accent, #f2a93b); } .ds-ch-sum { margin-top: 16px; font-size: 19px; line-height: 1.55; } .ds-ch-stack { margin-top: 32px; font-size: 15px; color: var(--ink-3, #88919a); }"
+    },
+    {
+      "name": "System Diagram",
+      "kind": "custom",
+      "description": "Vertical architecture drawing: graphite-2 nodes joined by captioned arrows, a packet travelling each connection.",
+      "html": "<ol class=\"ds-dia\"><li class=\"ds-node\"><p><b>Android app</b><span> · Expo dev build</span></p><span class=\"ds-kind\">Client</span></li><li class=\"ds-link\" aria-hidden=\"true\"><span class=\"ds-track\"><svg viewBox=\"0 0 9 48\" preserveAspectRatio=\"none\"><path d=\"M4.5 0v42M1 37l3.5 5 3.5-5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.25\" vector-effect=\"non-scaling-stroke\"/></svg><span class=\"ds-packet\"></span></span><span>HTTPS · WSS on 443</span></li><li class=\"ds-node\"><p><b>Express 5 API</b><span> · One Node process</span></p><span class=\"ds-kind\">Service</span></li></ol>",
+      "css": ".ds-dia { list-style: none; margin: 0; padding: 0; max-width: 520px; font-family: var(--font-mona), ui-sans-serif, system-ui, sans-serif; font-size: 15px; } .ds-node { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 20px; background: var(--surface-2, #182129); } .ds-node p { margin: 0; } .ds-node b { font-weight: 600; color: var(--ink, #edebe6); font-variation-settings: \"wdth\" 112; } .ds-node p span, .ds-kind { color: var(--ink-3, #88919a); } .ds-link { display: flex; align-items: stretch; gap: 12px; height: 48px; padding-left: 22px; color: var(--ink-2, #a9aeb3); } .ds-link > span:last-child { align-self: center; } .ds-track { position: relative; display: block; width: 9px; flex: none; color: var(--ink-3, #88919a); } .ds-track svg { position: absolute; inset: 0; width: 100%; height: 100%; } .ds-packet { position: absolute; left: 1.5px; top: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--ink, #edebe6); animation: ds-packet 2800ms cubic-bezier(0.77, 0, 0.175, 1) infinite; } @keyframes ds-packet { 0% { transform: translateY(0); opacity: 0; } 12%, 70% { opacity: 1; } 82%, 100% { transform: translateY(30px); opacity: 0; } } @media (prefers-reduced-motion: reduce) { .ds-packet { animation: none; transform: translateY(14px); } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Status Board",
+    "overview": "A warm graphite room with one sodium lamp. The system reads like a well-kept engineering status board: every project carries its true state as a mark, the work appears as real screenshots or as diagrams drawn from the project's own architecture docs, and nothing is decorated to look busier than it is. Depth comes from stepping the ground up in tone, never from shadows, borders or glows.\n\nOne variable family, Mona Sans, does all the display work through its width axis. Names and titles stretch wide; body copy stays at normal width and a slightly heavy 420 weight for legibility on the dark ground. Mono appears only for literal source code. Corners are square everywhere a container appears; the only round forms are the status marks and the diagram packets, which are marks, not containers.\n\nMotion is part of the material. Headings rise from behind their own baseline, the hero name stretches its width axis into place once, project chapters stack and settle as you scroll, and the system diagrams carry a small packet along each connection. Every recipe has a reduced-motion fallback that keeps the content and drops the movement.",
+    "keyCharacteristics": [
+      "Graphite ground stepped by tone (ground, surface-1, surface-2, surface-3); no structural shadows or borders.",
+      "One accent, sodium amber, for live status, the primary action and the focus ring.",
+      "Status carried by mark form, so it survives without colour.",
+      "Mona Sans width axis as the display voice: wider means more important.",
+      "Real screens and real architecture only; no mock-ups or illustration.",
+      "Scroll-scrubbed and line-masked motion with complete reduced-motion fallbacks."
+    ],
+    "rules": [
+      {
+        "name": "The One Lamp Rule",
+        "body": "Amber marks what is live or what you should press next, and the focus ring. If a new use is neither, it is ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tone Step Rule",
+        "body": "A container separates from its parent by moving one graphite step up, never by a border or shadow. Tiles that sit side by side are split by a 1px gap that lets the ground show through.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Is Rank Rule",
+        "body": "Importance is expressed on the width axis: body at default width, small names at 108 to 112, section headings at 116, titles of things at 125. Do not add a second display family to get contrast.",
+        "section": "typography"
+      },
+      {
+        "name": "The Mono Is Code Rule",
+        "body": "JetBrains Mono appears only inside literal <pre><code>. Labels, numbers and metadata stay in Mona Sans; numbers use tabular figures instead.",
+        "section": "typography"
+      },
+      {
+        "name": "The Only Overlays Float Rule",
+        "body": "A shadow is allowed only on an element that sits over other content (menus, popovers). Cards, panels and images never cast one.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Marks Are Round Rule",
+        "body": "A circle means a status or a signal in motion. Containers stay square; marks may be round.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do separate surfaces by stepping one graphite tone (ground to surface-1 to surface-2 to surface-3).",
+      "Do give every project a status mark whose form, not only colour, states live, beta or in progress.",
+      "Do use the Mona Sans width axis for rank: wdth 112 to 125 for names and titles, default width for body.",
+      "Do keep amber to live marks, the primary action and the focus ring.",
+      "Do show work as real screenshots (with the 10% white hairline outline) or diagrams drawn from the project's real architecture.",
+      "Do ship a reduced-motion fallback with every motion recipe that keeps the content visible and drops transform, blur and scrubbing.",
+      "Do keep interactive targets at 44px minimum and buttons at 48px."
+    ],
+    "donts": [
+      "Don't round containers, buttons or images; round forms are for status marks and packets only.",
+      "Don't add shadows to cards, panels or images; the overlay shadow is for floating menus only.",
+      "Don't draw 1px borders around containers; 1px rule lines belong to real data tables.",
+      "Don't use JetBrains Mono for labels, numbers or metadata; it is for literal code.",
+      "Don't add a second accent or use amber for decoration, headings or illustration.",
+      "Don't replace real screens with mock-ups, gradient blobs or stock imagery.",
+      "Don't add uppercase tracked labels or kickers above headings; metadata is 15px sentence case."
+    ]
+  }
+}

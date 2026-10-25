@@ -1,0 +1,8 @@
+node_modules
+.next
+.git
+.impeccable
+.taste-skill
+.vercel
+.env*
+npm-debug.log*
